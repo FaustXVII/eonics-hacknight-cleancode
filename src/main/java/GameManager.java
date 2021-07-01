@@ -24,7 +24,7 @@ public class GameManager {
         output.displayCreditsToSpend(state);
 
         howMuchYouWannaBet();
-        OnWhatOutcomeDoYouBet();
+        onWhatOutcomeDoYouBet();
         rollTheDice();
 
         output.displayScoreScreen(state);
@@ -39,7 +39,7 @@ public class GameManager {
         state.placeBet(bet);
     }
 
-    private void OnWhatOutcomeDoYouBet() {
+    private void onWhatOutcomeDoYouBet() {
         output.displayQuestion_OnWhatOutcomeDoYouBet();
         final var betOn = input.getBetOnFromUser();
         state.setBetOption(betOn);
