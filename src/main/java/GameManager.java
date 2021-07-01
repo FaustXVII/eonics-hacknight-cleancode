@@ -46,7 +46,6 @@ public class GameManager {
     }
 
     private void rollTheDice() {
-        // Start round N - state
         final var diceResults = new Dice().rollTwoDice();
         output.displayDiceRollResults(diceResults);
         final var winningBet = diceResults.getWinningBetOption();
