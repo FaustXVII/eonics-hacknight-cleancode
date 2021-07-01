@@ -1,75 +1,62 @@
-import java.util.Random;
-import java.util.Scanner;
+import gameObjects.GameState;
+import gameObjects.dice.Dice;
+import io.input.InputAdapter;
+import io.output.OutputAdapter;
 
 public class GameManager {
+    private final InputAdapter input;
+    private final OutputAdapter output;
+    private final GameState state;
+
+
+    public GameManager(final InputAdapter input, final OutputAdapter output, final GameState state){
+        this.input = input;
+        this.output = output;
+        this.state = state;
+    }
+
     public void startNewGame(){
-        MessagePrinter.printGameRules();
-
-        startNewRound(new GameState());
+        output.displayGameRules();
+        startGameRound();
     }
 
-    public void startNewRound(GameState state){
-        // place bet
-        MessagePrinter.printAmountOfCredits(state);
+    private void startGameRound(){
+        output.displayCreditsToSpend(state);
 
-        MessagePrinter.printBetAmount();
-        var bet = new Scanner(System.in).nextInt();
+        howMuchYouWannaBet();
+        OnWhatOutcomeDoYouBet();
+        rollTheDice();
 
-        MessagePrinter.printBetOn();
-        var betOn = new Scanner(System.in).nextInt();
+        output.displayScoreScreen(state);
+        output.displayCreditsToSpend(state);
 
-        rollDice(state, bet, betOn);
+        nextRound();
     }
 
-    private void rollDice(GameState state, int bet, int betOn) {
-        var roll_1 = new Random().nextInt(6) +1;
-        var roll_2 = new Random().nextInt(6) +1;
-
-        System.out.println("You Rolled a : " + roll_1 + " and a " + roll_2);
-
-        var sum = roll_1 + roll_2;
-        System.out.println("The sum is: "  + sum);
-
-        if(sum > 7){
-            if (betOn == 1){
-                System.out.println("You won!");
-                state.addToCredits(bet);
-            }else{
-                System.out.println("You Lost!");
-                state.removeFromCredits(bet);
-            }
-        }
-
-        if(sum < 7){
-            if (betOn == 2){
-                System.out.println("You won!");
-                state.addToCredits(bet);
-            }else{
-                System.out.println("You Lost!");
-                state.removeFromCredits(bet);
-            }
-        }
-
-        if(sum == 7){
-            if (betOn == 3){
-                System.out.println("You won!");
-                state.addToCredits(bet * 2);
-            }else{
-                System.out.println("You Lost!");
-                state.removeFromCredits(bet);
-            }
-        }
-
-
-        isGameOver(state);
+    private void howMuchYouWannaBet() {
+        output.displayQuestion_HowMuchYouWannaBet();
+        final var bet = input.getBetAmountFromUser(state);
+        state.placeBet(bet);
     }
 
-    private void isGameOver(GameState state) {
-        if(state.getCredits() < 1){
-            System.out.println("\nGame Over!");
-        }else {
-            startNewRound(state);
-        }
+    private void OnWhatOutcomeDoYouBet() {
+        output.displayQuestion_OnWhatOutcomeDoYouBet();
+        final var betOn = input.getBetOnFromUser();
+        state.setBetOption(betOn);
     }
 
+    private void rollTheDice() {
+        // Start round N - state
+        final var diceResults = new Dice().rollTwoDice();
+        output.displayDiceRollResults(diceResults);
+        final var winningBet = diceResults.getWinningBetOption();
+        state.setWinningBet(winningBet);
+        state.updateCreditsBasedOnOutcome();
+    }
+
+    private void nextRound() {
+        if(state.canPlayAgain()) {
+            startGameRound();
+        }
+    }
 }
