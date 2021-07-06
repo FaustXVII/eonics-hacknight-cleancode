@@ -3,19 +3,19 @@ import gameObjects.dice.Dice;
 import io.input.InputAdapter;
 import io.output.OutputAdapter;
 
-public class GameManager {
+final class GameManager {
     private final InputAdapter input;
     private final OutputAdapter output;
     private final GameState state;
 
 
-    public GameManager(final InputAdapter input, final OutputAdapter output, final GameState state){
+    GameManager(final InputAdapter input, final OutputAdapter output, final GameState state){
         this.input = input;
         this.output = output;
         this.state = state;
     }
 
-    public void startNewGame(){
+    void startNewGame(){
         output.displayGameRules();
         startGameRound();
     }
