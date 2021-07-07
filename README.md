@@ -1,5 +1,5 @@
-# eonics-hacknight-cleancode<br>
-###Welcome to the hacknight!
+# eonics-hacknight-cleancode
+### Welcome to the hacknight!
 To join the clean code challenge, go to the branch 'challenge' <br>
 ```bash
 $ git checkout challenge
