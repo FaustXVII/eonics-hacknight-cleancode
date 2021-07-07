@@ -17,7 +17,7 @@ class DiceResultsTest {
 
 
         // Then
-        assertEquals(BetOptions.HIGH, result);
+        assertEquals(BetOptions.H, result);
     }
 
     @Test
@@ -30,7 +30,7 @@ class DiceResultsTest {
 
 
         // Then
-        assertEquals(BetOptions.LOW, result);
+        assertEquals(BetOptions.L, result);
     }
 
     @Test
@@ -43,6 +43,6 @@ class DiceResultsTest {
 
 
         // Then
-        assertEquals(BetOptions.SEVEN, result);
+        assertEquals(BetOptions.S, result);
     }
 }

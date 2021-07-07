@@ -13,6 +13,6 @@ public class InputMock implements InputAdapter {
 
     @Override
     public BetOptions getBetOnFromUser() {
-        return BetOptions.HIGH;
+        return BetOptions.H;
     }
 }

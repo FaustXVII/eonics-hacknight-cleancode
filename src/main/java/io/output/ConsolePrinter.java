@@ -41,7 +41,7 @@ public class ConsolePrinter implements OutputAdapter {
     @Override
     public void displayDiceRollResults(final DiceResults diceResults) {
         final var message =
-            "You rolled a [" + diceResults.getRollOne() + "] and a [" + diceResults.getRollTwo() + "]\n" +
+            "You rolled a [" + diceResults.getR1() + "] and a [" + diceResults.getR2() + "]\n" +
             "Total : " + diceResults.getSum();
 
         System.out.println(message);

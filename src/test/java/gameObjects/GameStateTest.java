@@ -9,7 +9,7 @@ class GameStateTest {
     @Test
     void updateCreditsBasedOnOutcome_winHigh() {
         // Given
-        final GameState subject = initState(BetOptions.HIGH, BetOptions.HIGH);
+        final GameState subject = initState(BetOptions.H, BetOptions.H);
 
         // When
         subject.updateCreditsBasedOnOutcome();
@@ -22,7 +22,7 @@ class GameStateTest {
     @Test
     void updateCreditsBasedOnOutcome_winLow() {
         // Given
-        final GameState subject = initState(BetOptions.LOW, BetOptions.LOW);
+        final GameState subject = initState(BetOptions.L, BetOptions.L);
 
         // When
         subject.updateCreditsBasedOnOutcome();
@@ -35,7 +35,7 @@ class GameStateTest {
     @Test
     void updateCreditsBasedOnOutcome_winSeven() {
         // Given
-        final GameState subject = initState(BetOptions.SEVEN, BetOptions.SEVEN);
+        final GameState subject = initState(BetOptions.S, BetOptions.S);
 
         // When
         subject.updateCreditsBasedOnOutcome();
@@ -48,7 +48,7 @@ class GameStateTest {
     @Test
     void updateCreditsBasedOnOutcome_loseHigh() {
         // Given
-        final GameState subject = initState(BetOptions.HIGH, BetOptions.LOW);
+        final GameState subject = initState(BetOptions.H, BetOptions.L);
 
         // When
         subject.updateCreditsBasedOnOutcome();
@@ -61,7 +61,7 @@ class GameStateTest {
     @Test
     void updateCreditsBasedOnOutcome_loseLow() {
         // Given
-        final GameState subject = initState(BetOptions.LOW, BetOptions.HIGH);
+        final GameState subject = initState(BetOptions.L, BetOptions.H);
 
         // When
         subject.updateCreditsBasedOnOutcome();
@@ -74,7 +74,7 @@ class GameStateTest {
     @Test
     void updateCreditsBasedOnOutcome_loseSeven() {
         // Given
-        final GameState subject = initState(BetOptions.SEVEN, BetOptions.HIGH);
+        final GameState subject = initState(BetOptions.S, BetOptions.H);
 
         // When
         subject.updateCreditsBasedOnOutcome();

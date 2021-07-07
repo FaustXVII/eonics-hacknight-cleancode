@@ -24,13 +24,13 @@ public class CommandlineScanner implements InputAdapter{
         final var input = new Scanner(System.in).nextInt();
 
         if (input == 1)
-            return BetOptions.HIGH;
+            return BetOptions.H;
 
         if (input == 2)
-            return BetOptions.LOW;
+            return BetOptions.L;
 
         if (input == 3)
-            return BetOptions.SEVEN;
+            return BetOptions.S;
 
         throw simpleWrongInputException;
     }

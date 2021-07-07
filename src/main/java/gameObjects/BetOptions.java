@@ -1,7 +1,7 @@
 package gameObjects;
 
 public enum BetOptions {
-    HIGH,
-    LOW,
-    SEVEN
+    H,
+    L,
+    S
 }

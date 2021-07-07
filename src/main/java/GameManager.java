@@ -23,37 +23,23 @@ final class GameManager {
     private void startGameRound(){
         output.displayCreditsToSpend(state);
 
-        howMuchYouWannaBet();
-        onWhatOutcomeDoYouBet();
-        rollTheDice();
-
-        output.displayScoreScreen(state);
-        output.displayCreditsToSpend(state);
-
-        nextRound();
-    }
-
-    private void howMuchYouWannaBet() {
         output.displayQuestion_HowMuchYouWannaBet();
         final var bet = input.getBetAmountFromUser(state);
         state.placeBet(bet);
-    }
 
-    private void onWhatOutcomeDoYouBet() {
         output.displayQuestion_OnWhatOutcomeDoYouBet();
         final var betOn = input.getBetOnFromUser();
         state.setBetOption(betOn);
-    }
 
-    private void rollTheDice() {
         final var diceResults = new Dice().rollTwoDice();
         output.displayDiceRollResults(diceResults);
         final var winningBet = diceResults.getWinningBetOption();
         state.setWinningBet(winningBet);
         state.updateCreditsBasedOnOutcome();
-    }
 
-    private void nextRound() {
+        output.displayScoreScreen(state);
+        output.displayCreditsToSpend(state);
+
         if(state.canPlayAgain()) {
             startGameRound();
         }

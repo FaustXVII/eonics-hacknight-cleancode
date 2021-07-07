@@ -1,14 +1,13 @@
 package gameObjects;
 
 public class GameState {
-    private static final int STARTING_CREDITS_AMOUNT = 50;
     private final Credits creditsToSpend;
     private Credits creditsBet;
     private BetOptions placedBet;
     private BetOptions winningBet;
 
     public GameState(){
-        creditsToSpend = new Credits(STARTING_CREDITS_AMOUNT);
+        creditsToSpend = new Credits(50);
     }
 
     public void placeBet(final Credits credits){
@@ -29,13 +28,13 @@ public class GameState {
     }
 
     public void updateCreditsBasedOnOutcome(){
-        if(winWithA(BetOptions.SEVEN)){
+        if(winWithA(BetOptions.S)){
             creditsToSpend.addFourTimes(creditsBet);
 
-        } else if(winWithA(BetOptions.HIGH)){
+        } else if(winWithA(BetOptions.H)){
             creditsToSpend.addTwice(creditsBet);
 
-        } else if(winWithA(BetOptions.LOW)){
+        } else if(winWithA(BetOptions.L)){
             creditsToSpend.addTwice(creditsBet);
         }
     }

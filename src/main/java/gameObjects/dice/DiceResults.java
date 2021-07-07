@@ -3,22 +3,22 @@ package gameObjects.dice;
 import gameObjects.BetOptions;
 
 public class DiceResults {
-    final int rollOne;
-    final int rollTwo;
+    final int r1; // Roll one
+    final int r2; // Roll 2
     final int sum;
 
-    public DiceResults(final int rollOne, final int rollTwo){
-        this.rollOne = rollOne;
-        this.rollTwo = rollTwo;
-        sum = rollOne + rollTwo;
+    public DiceResults(final int r1, final int r2){
+        this.r1 = r1;
+        this.r2 = r2;
+        sum = r1 + r2;
     }
 
-    public int getRollOne() {
-        return rollOne;
+    public int getR1() {
+        return r1;
     }
 
-    public int getRollTwo() {
-        return rollTwo;
+    public int getR2() {
+        return r2;
     }
 
     public int getSum(){
@@ -27,11 +27,11 @@ public class DiceResults {
 
     public BetOptions getWinningBetOption(){
         if(sum > 7)
-            return BetOptions.HIGH;
+            return BetOptions.H;
 
         if(sum < 7)
-            return BetOptions.LOW;
+            return BetOptions.L;
 
-        return BetOptions.SEVEN;
+        return BetOptions.S;
     }
 }

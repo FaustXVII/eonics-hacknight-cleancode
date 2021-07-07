@@ -15,7 +15,7 @@ class DiceTest {
         final var result = subject.rollTwoDice();
 
         // Then
-        assertTrue(isBetween1And6(result.rollOne));
+        assertTrue(isBetween1And6(result.r1));
     }
 
     private boolean isBetween1And6(final int eyes){
